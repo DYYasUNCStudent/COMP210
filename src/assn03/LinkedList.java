@@ -98,20 +98,19 @@ public class LinkedList<T> {
      *
      */
     public void removeRepeats() {
-        if (head == null){
-            return;
-        }
-        Node<T> current = head;
-        while (current.getNext() != null){
-            if (current.getValue() == (current.getNext().getValue())) {
-                current.setNext(current.getNext().getNext());
-                size--;
-                if (current.getNext() == null) {
-                    tail = current;
+        if (head != null){
+            Node<T> current = head;
+            while (current.getNext() != null){
+                if (current.getValue() == (current.getNext().getValue())) {
+                    current.setNext(current.getNext().getNext());
+                    size--;
+                    if (current.getNext() == null) {
+                        tail = current;
+                    }
                 }
-            }
-            else {
-                current = current.getNext();
+                else {
+                    current = current.getNext();
+                }
             }
         }
     }
@@ -158,10 +157,7 @@ public class LinkedList<T> {
      * @param list2
      */
     public void merge(LinkedList list2) {
-        if (list2.size > size){
-            return;
-        }
-        else{
+        if (size >= list2.size){
             Node <T> current = head;
             Node <T> add = list2.head;
             Node <T> next = null;
